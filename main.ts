@@ -1,1 +1,23 @@
-import F from"node:fs";let{readFileSync:R,writeFileSync:W}=F,{MAKEFUN_INPUT_DIR:I="/input",MAKEFUN_OUTPUT_DIR:O="/output"}=process.env,X=e=>{throw e},p,q,t,u,g,j,k,o,c,a,b,x,d,y,z,e,v,w,s=[],C=[],M,out,S="0Dt-5263????????.......1...1...?...?????????????PMMP0???????????1*??????????????--4-";for(let id of F.readdirSync(I)){e=I+"/"+id+"/",p=R(e+"program.bin"),q=R(e+"input.bin");t=u=g=j=0;M={};out="";try{for(k=1e6;k||X(10);)k--,g>>>0>=p.length&&X(9),c=S.charCodeAt(o=p[g])-40,[v,w]=[s[t-1],s[t-2]],c!=c|c==23&&X(5),g+=1+c/16|0,g>p.length&&X(9),t<(c&3)&&X(2),t+(c>>2&3)>258&&X(3),o==0?X(0):o<3?s[t++]=o<2?p[g-1]<<24>>24:p.readInt32LE(g-4):o==3?t--:o==5?([s[t-2],s[t-1]]=[v,w]):o==4|o==6?(s[t]=o<5?v:w,t++):o==7?s.splice(t-3,3,w,v,s[t-3]):o==23|o==27?s[t-1]=o<25?-v|0:~v:o<35?(a=w,b=v,y=a>>>0,z=b>>>0,d=b&31,s[--t-1]=!b&&o>18&o<23?X(4):[a+b|0,a-b|0,Math.imul(a,b),a/b|0,a%b|0,y/z|0,y%z|0,0,a&b,a|b,a^b,0,a<<d,a>>d,a>>>d|0,0,a==b|0,a<b|0,y<z|0][o-16]):o<53?(a=o<52?p.readInt16LE(g-2):0,o<51?(g+=a*[1,!v,!!v][o-48],t-=c&3):o==51?(u>63?X(7):(C[u++]=g,g=a&65535)):u?g=C[--u]:X(8)):o<66?v>>8?X(6):o==64?s[t-1]=M[v]||0:(M[v]=w,t-=2):o<82?(a=o<81?""+v:String.fromCharCode(v&255),out.length>65536-a.length?X(11):(out+=a,t--)):o==82?s[t++]=q[j++]??-1:X(v&255);}catch(e){x=e}e=O+"/"+id;F.mkdirSync(e);W(e+"/stdout.bin",out,"latin1");W(e+"/exit.txt",x+"")}
+import{readdirSync as D,readFileSync as R,mkdirSync as K,writeFileSync as W}from"fs"
+let T=e=>{throw e},S="0` 1A2B3}}}}}}}}222222212221222}222}}}}}}}}}}}}}pqqp0}}}}}}}}}}}12}}}}}}}}}}}}}}11@1",{MAKEFUN_INPUT_DIR:I,MAKEFUN_OUTPUT_DIR:O}=process.env;I??="/input",O??="/output"
+for(let n of D(I)){
+let p=R(I+"/"+n+"/program.bin"),q=R(I+"/"+n+"/input.bin"),s=[],t=[],m=[],o="",P=0,j=0,x=10,k,u,v,L,A,a,b,g,r,z,y,d=O+"/"+n
+try{
+for(k=1e6;k;k--)
+z=s.length,P<0|P>=p.length&&T(9),u=p[P],v=(S.charCodeAt(u)||125)-48,v==77&&T(5),
+L=v>>5,L=L>2?4:L,P+L>=p.length&&T(9),z<(v&3)&&T(2),
+v&16&&z>255&&T(3),A=L?p.readIntLE(P+1,L):0,
+b=s[z-1],a=s[z-2],g=s[z-3],P+=1+L,
+(u==0|u==83)?(x=u?b&255:0,k=1):u<3?s[z]=A:u==3?s.pop():u==4?s[z]=b:
+u==5?(s[z-2]=b,s[z-1]=a):u==6?s[z]=a:u==7?(s[z-3]=a,s[z-2]=b,s[z-1]=g):
+u>18&u<23&!b?T(4):u>15&u<35?((u==23|u==27)&&(a=b),r=[
+a+b,a-b,Math.imul(a,b),a/b|0,a%b,(a>>>0)/(b>>>0),(a>>>0)%(b>>>0),
+-a,a&b,a|b,a^b,~a,a<<b,a>>b,a>>>b,0,a==b,a<b,a>>>0<b>>>0][u-16]|0,
+u==23|u==27?s[z-1]=r:(s[z-2]=r,s.pop())):
+u>47&u<51?(u>48&&s.pop(),(u==48||(b!=0)^(u==49))&&(P+=A)):u==51?t[63]?T(7):(t.push(P),P=A&65535):
+u==52?!t[0]?T(8):P=t.pop():
+u>63&u<66?b<0|b>255?T(6):u==64?s[z-1]=m[b]||0:(m[b]=a,s.length-=2):
+u>79&u<82?(y=u==80?""+b:String.fromCharCode(b&255),o.length+y.length>65536?T(11):(o+=y,s.pop())):u==82?s[z]=j<q.length?q[j++]:-1:0
+}catch(e){x=e}
+K(d,{recursive:!0}),W(d+"/stdout.bin",Buffer.from(o,"latin1")),W(d+"/exit.txt",""+x)
+}
